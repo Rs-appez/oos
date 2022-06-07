@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 from model.player import Player
 
-
 tournaments = []
 players  = []
 matches = []
@@ -41,33 +40,31 @@ for tournament in tournaments:
         for player in match_xml.find_all("Player"):
             id_players.append("0"+player.get_text())
 
-
         winner_id = match_xml.find("Winner").get_text()
-
-        print(id_players)
-
+        
         for player_id in id_players:
             if not (player_id == '00'):
-                print(player_id)
                 player_index = players.index(Player('',player_id))
-
                 player = players[player_index]
-
                 if match_xml.find("Status").get_text() == 'Winner':
-                    if player_id == winner_id:
+                    if player_id == '0'+winner_id:
                         player.win += 1
                     else :
                         player.loose += 1
-                elif  match_xml.find("Status").get_text() == 'Draw':
-
+                elif match_xml.find("Status").get_text() == 'Draw':
                     player.draw +=1
 
 #make html
 players.sort(reverse = True,key=Player.triPts)
     
 file = open('res.html','w')
-file.write("<!DOCTYPE html><html><head></head> <body><h1>Resultats OOS </h1><div>")
+file.write("<!DOCTYPE html><html><head>")
+file.write("<style>body{ background-color:rgb(230, 230, 230)} .center{margin-left:auto;margin-right:auto;}th, td {padding-left: 20px; padding-right: 20px}</style>")
+file.write("</head><body><h1 style=\"text-align:center\">Resultats OOS </h1><div>")
+file.write("<table class=\"center\"><tr><th>N°</th><th>NAME</th><th>POINT</th></tr>")
 for i in range(0,len(players)):
-    file.write( f"N° {i+1} - {players[i]}" + "<br>")
+    file.write(f"<tr style=\"text-align:center\"><td>{i+1}</td><td>{players[i].name}</td><td>{players[i].countPoint()}</td></tr>")
+    
+file.write("</table>")
 file.write("<div></body></html>")
 file.close()

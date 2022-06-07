@@ -3,3 +3,8 @@
 /res.html
 /test.py
 tournament/
+
+__pycache__/
+*.py[cod]
+*$py.class
+.vscode/launch.json

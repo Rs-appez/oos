@@ -4,7 +4,7 @@ class Player:
 
     win = 0
     draw = 0
-    loose =  0
+    loose = 0
 
 
     def __init__(self, name,id ):
@@ -13,22 +13,21 @@ class Player:
         self.participaton += 1
         
     def __str__(self):
-        return f"{self.name} avec {self.countPoint()} points"
-
+        return f"{self.id} : {self.name} [{self.win}-{self.loose}-{self.draw}] {self.countPoint()} points"
+    def name(self):
+        return self.name
+    
     def __eq__(self, other):
         return self.id == other.id
     
     def countPoint(self):
         bonus= 0
-        
         if(self.participaton >1):
             if(self.participaton >2):
                 bonus = 3
             else:
-                bonus=2
-        
-        
-        return self.win*3 + self.draw*2 + self.loose + bonus
+                bonus = 2
+        return (self.win*3 + self.draw*2 + self.loose + bonus)
 
     @staticmethod
     def triPts(e):
