@@ -1,6 +1,6 @@
 /.env
 /res.html
-tournament/*
+/tournament/*
 
 __pycache__/
 *.py[cod]

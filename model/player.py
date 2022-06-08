@@ -1,3 +1,5 @@
+
+
 class Player:
 
     participaton = 0
@@ -22,11 +24,8 @@ class Player:
     
     def countPoint(self):
         bonus= 0
-        if(self.participaton >1):
-            if(self.participaton >2):
-                bonus = 3
-            else:
-                bonus = 2
+        if self.participaton > 1:
+            bonus = self.participaton
         return (self.win*3 + self.draw*2 + self.loose + bonus)
 
     @staticmethod

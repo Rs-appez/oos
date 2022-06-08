@@ -60,7 +60,7 @@ players.sort(reverse = True,key=Player.triPts)
 file = open('res.html','w')
 file.write("<!DOCTYPE html><html><head>")
 file.write("<style>body{ background-color:rgb(230, 230, 230)} .center{margin-left:auto;margin-right:auto;}th, td {padding-left: 20px; padding-right: 20px}</style>")
-file.write("</head><body><h1 style=\"text-align:center\">Resultats OOS </h1><div>")
+file.write("</head><body><h1 style=\"text-align:center\">Resultats<BR>Saison 2 OOS </h1><div>")
 file.write("<table class=\"center\"><tr><th>N°</th><th>NAME</th><th>POINT</th></tr>")
 for i in range(0,len(players)):
     file.write(f"<tr style=\"text-align:center\"><td>{i+1}</td><td>{players[i].name}</td><td>{players[i].countPoint()}</td></tr>")
